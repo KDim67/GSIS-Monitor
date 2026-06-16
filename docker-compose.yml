@@ -1,0 +1,14 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    container_name: gsis_monitor_db
+    restart: always
+    environment:
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+    ports:
+      - "${DB_PORT:-5433}:5432"
+    volumes:
+      - ./db/pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
