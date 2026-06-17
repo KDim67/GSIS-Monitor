@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from typing import List, Optional
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 
 from .database import get_db, engine
 from . import models, schemas
@@ -118,7 +118,7 @@ def resolve_alert(alert_id: int, db: Session = Depends(get_db)):
          raise HTTPException(status_code=400, detail="Alert already resolved")
          
     db_alert.status = "resolved"
-    db_alert.resolved_at = datetime.utcnow()
+    db_alert.resolved_at = datetime.now(timezone.utc)
     db_alert.message = f"{db_alert.message} (Manually resolved)"
     db.commit()
     db.refresh(db_alert)
@@ -144,7 +144,7 @@ def get_service_logs(
     if not service_exists:
         raise HTTPException(status_code=404, detail="Service not found")
         
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     if range_param == "1h":
         start_time = now - timedelta(hours=1)
     elif range_param == "6h":

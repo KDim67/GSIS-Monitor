@@ -50,7 +50,7 @@ class AlertRule(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.datetime.utcnow)
 
     service = relationship("Service", back_populates="rules")
-    alerts = relationship("AlertLog", back_populates="alerts", cascade="all, delete-orphan")
+    alerts = relationship("AlertLog", back_populates="rule", cascade="all, delete-orphan")
 
 class AlertLog(Base):
     __tablename__ = "alert_log"
