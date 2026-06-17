@@ -138,7 +138,11 @@ func PingService(s Service) *PingLog {
 		log.Printf("DEBUG [%s]: Checking keyword '%s' (bytes: %v) in body", s.Name, kw, []byte(kw))
 		if !strings.Contains(bodyStr, kw) {
 			verified = false
-			log.Printf("DEBUG [%s]: Keyword not found. Body snippet: %s", s.Name, bodyStr[:200])
+			snippet := bodyStr
+			if len(bodyStr) > 200 {
+				snippet = bodyStr[:200]
+			}
+			log.Printf("DEBUG [%s]: Keyword not found. Body snippet: %s", s.Name, snippet)
 		} else {
 			log.Printf("DEBUG [%s]: Keyword found!", s.Name)
 		}
