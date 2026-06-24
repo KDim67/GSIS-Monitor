@@ -62,7 +62,7 @@ GSIS-Monitor/
 │   │   ├── global.css          # Consolidated single-line CSS styles
 │   │   └── routes/             # SvelteKit routing pages (+layout, dashboard, alerts, services)
 │   └── package.json            # npm package dependencies and build scripts
-└── k8s/                        # Kubernetes manifests (deployments, configmaps, services)
+└── k8s/                        # Kubernetes manifests (statefulsets, deployments, configmaps, services)
 ```
 
 ---
@@ -170,7 +170,7 @@ docker build --target frontend -t gsis-monitor-frontend:latest -f Dockerfile .
 ```
 
 ### 4. Deploy Manifests
-Deploy the ConfigMaps, Services, and Deployments:
+Deploy the ConfigMaps, Services, StatefulSets, and Deployments:
 ```bash
 kubectl apply -f k8s/
 ```

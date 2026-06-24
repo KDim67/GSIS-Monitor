@@ -97,10 +97,11 @@ data:
     -- Seed initial GSIS public services
     INSERT INTO service (name, url, verification_keyword, exclusion_keyword, skip_tls_verify)
     VALUES 
-    ('e-Paravolo', 'https://www1.gsis.gr/sgsisportal/eparavolo.html', 'e-Παράβολο', 'maintenance', FALSE),
-    ('Taxisnet SSO Login', 'https://sso.gsis.gr/login', 'Taxisnet', 'error', FALSE),
-    ('Διαύγεια', 'https://diavgeia.gov.gr', 'Διαύγεια', 'error', FALSE),
-    ('Απογραφή', 'https://apografi.gov.gr', 'Απογραφή', 'maintenance', TRUE)
+    ('e-Paravolo', 'https://www.gsis.gr/polites-epiheiriseis/pliromes-kai-eispraxeis/e-paravolo', 'e-Παράβολο', NULL, FALSE),
+    ('Taxisnet SSO Login', 'https://login.gsis.gr/sso', 'gsis_logo.png', NULL, FALSE),
+    ('Διαύγεια', 'https://diavgeia.gov.gr', NULL, NULL, FALSE),
+    ('Απογραφή', 'https://apografi.gov.gr', NULL, NULL, TRUE),
+    ('ΓΓΠΣ', 'https://www.gsis.gr', 'Γενική Γραμματεία', NULL, FALSE)
     ON CONFLICT (name) DO NOTHING;
 
     -- Seed default alert rules for these services

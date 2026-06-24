@@ -93,7 +93,7 @@ VALUES
 ('Taxisnet SSO Login', 'https://login.gsis.gr/sso', 'gsis_logo.png', NULL, FALSE),
 ('Διαύγεια', 'https://diavgeia.gov.gr', NULL, NULL, FALSE),
 ('Απογραφή', 'https://apografi.gov.gr', NULL, NULL, TRUE),
-('ΓΓΠΣΨΔ Portal', 'https://www.gsis.gr', 'Γενική Γραμματεία', NULL, FALSE)
+('ΓΓΠΣ', 'https://www.gsis.gr', 'Γενική Γραμματεία', NULL, FALSE)
 ON CONFLICT (name) DO NOTHING;
 
 -- Seed default alert rules for these services
